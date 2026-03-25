@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FECC33;
+  --color-accent: #0044FF;
+  --color-neutral-dark: #000000;
+  --color-neutral-light: #FFFFFF;
+  --color-red: #FF0000;
+  
+  --font-sans: "Outfit", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-serif: "Fraunces", "Georgia", serif;
+}
+
+@layer base {
+  :root {
+    --bg: #FFFFFF;
+    --fg: #000000;
+    --accent: #0044FF;
+    --yellow: #FECC33;
+    --red: #FF0000;
+    --line: rgba(0, 0, 0, 0.15);
+  }
+
+  * {
+    @apply border-neutral-dark/10 box-border;
+  }
+
+  html,
+  body {
+    @apply antialiased overflow-x-hidden;
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    line-height: 1.25;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-black tracking-[-0.03em] uppercase leading-[1] text-neutral-dark;
+  }
+
+  p, span, div {
+    @apply font-sans;
+  }
+
+  p {
+    @apply text-neutral-dark/85 leading-relaxed font-medium;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-dark/10 rounded-full transition-colors;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-dark/20;
+  }
+}
+
+@layer utilities {
+  .headline-lg {
+    @apply text-[clamp(2rem,6.5vw,5.5rem)] font-black tracking-[-0.04em] leading-[1];
+  }
+
+  .headline-md {
+    @apply text-[clamp(2rem,7vw,7.5rem)] font-black tracking-[-0.03em] leading-[0.9];
+  }
+
+  .cinematic-headline {
+    @apply font-serif italic text-[clamp(2.2rem,6.5vw,5.5rem)] leading-[0.95] tracking-[-0.04em] font-black;
+  }
+
+  .surface-card {
+    @apply bg-neutral-light border border-neutral-dark/[0.08] shadow-[0_8px_30px_rgb(0,0,0,0.04)];
+  }
+
+  .surface-soft {
+    @apply bg-white/60 backdrop-blur-md border border-neutral-dark/[0.05];
+  }
+
+  .story-text {
+    @apply font-serif text-[clamp(1.25rem,3.5vw,2.5rem)] leading-[1.2] font-semibold tracking-tight;
+  }
+
+  .btn-primary {
+    @apply rounded-full bg-neutral-dark px-12 py-5 text-[15px] font-black uppercase tracking-[0.2em] text-white transition-all hover:scale-[1.02] hover:shadow-xl active:scale-95 flex items-center justify-center;
+  }
+
+  .btn-secondary {
+    @apply rounded-full border border-neutral-dark/20 px-12 py-5 text-[15px] font-black uppercase tracking-[0.2em] text-neutral-dark transition-all hover:bg-neutral-dark hover:text-white active:scale-95 flex items-center justify-center;
+  }
+
+  .organic-gradient {
+    background: radial-gradient(circle at 50% 50%, rgba(254, 204, 51, 0.08) 0%, transparent 70%);
+  }
+}
+
+/* Lenis Support */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
